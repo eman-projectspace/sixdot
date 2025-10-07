@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
 import ProductDetails from "./pages/ProductDetails";
 import WomenShoe from "./category/WomenShoe";
 import Babyshoe from "./category/Babyshoe";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/babyshoe" element={<Babyshoe />} />
             <Route path="/menshoe" element={<Menshoe />} />
             <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
 
           </Routes>
         </main>

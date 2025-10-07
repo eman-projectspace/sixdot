@@ -7,7 +7,11 @@ export default function Home() {
       style={{ backgroundImage: "url('/heels.jpg')" }}
     >
       {/* Black overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
+
+
+
+
 
       {/* Tilted Promo Ribbon (Left side) */}
       <motion.div
@@ -18,6 +22,7 @@ export default function Home() {
       >
         30% Off Today!
       </motion.div>
+
 
       {/* Banner Content (Centered) */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center h-screen px-6">
