@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
 
 const babyShoes = [
-  { id: 1, name: "Baby Sneaker Tiny Steps", price: "$50", image: "/baby show.jpg" },
-  { id: 2, name: "Soft Baby Moccasin", price: "$60", image: "/pink-shop.jpg" },
+  { id: 1, name: "Baby Sneaker Tiny Steps", price: "2350", image: "/baby show.jpg" },
+  { id: 2, name: "Soft Baby Moccasin", price: "2360", image: "/pink-shop.jpg" },
 ];
 
 export default function Baby() {
@@ -62,7 +62,7 @@ export default function Baby() {
                 />
                 <div className="p-5 text-center">
                   <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-                  <p className="text-gray-600 font-medium">{product.price}</p>
+                  <p className="text-gray-600 font-medium">PKR {product.price}</p>
                 </div>
               </motion.div>
             ))

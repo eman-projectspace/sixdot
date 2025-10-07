@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
 
 const products = [
-  { id: 1, name: "Classic Brown Leather", price: "$120", category: "Men", image: "/men-shoe.jpg" },
-  { id: 2, name: "Urban Street Sneaker", price: "$95", category: "Men", image: "/shoe.jpg" },
-  { id: 3, name: "Desert Tan Boot", price: "$150", category: "Women", image: "/heels.jpg" },
-  { id: 4, name: "Midnight Runner", price: "$110", category: "Baby", image: "/baby show.jpg" },
+  { id: 1, name: "Classic Brown Leather", price: "3500", category: "Men", image: "/men-shoe.jpg" },
+  { id: 2, name: "Urban Street Sneaker", price: "2800", category: "Men", image: "/shoe.jpg" },
+  { id: 3, name: "Desert Tan Boot", price: "4100", category: "Women", image: "/heels.jpg" },
+  { id: 4, name: "Midnight Runner", price: "2310", category: "Baby", image: "/baby show.jpg" },
 ];
 
 
@@ -40,6 +40,7 @@ export default function Shop() {
 
         <div className="flex justify-center gap-4 mb-12"> <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Men</a> <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Women</a> <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Baby</a> </div>
 
+
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {filteredProducts.length > 0 ? (
@@ -59,7 +60,7 @@ export default function Shop() {
                 />
                 <div className="p-5 text-center">
                   <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-                  <p className="text-gray-600 font-medium">{product.price}</p>
+                  <p className="text-gray-600 font-medium">PKR {product.price}</p>
                 </div>
               </motion.div>
             ))
