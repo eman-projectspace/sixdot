@@ -1,39 +1,27 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const products = [
-  {
-    id: 1,
-    name: "Classic Brown Leather",
-    price: "$120",
-    image: "/men-shoe.jpg",
-  },
-  {
-    id: 2,
-    name: "Urban Street Sneaker",
-    price: "$95",
-    image: "/shoe.jpg",
-  },
-  {
-    id: 3,
-    name: "Desert Tan Boot",
-    price: "$150",
-    image: "/heels.jpg",
-  },
-  {
-    id: 4,
-    name: "Midnight Runner",
-    price: "$110",
-    image: "/baby show.jpg",
-  },
+  { id: 1, name: "Classic Brown Leather", price: "$120", image: "/men-shoe.jpg" },
+  { id: 2, name: "Urban Street Sneaker", price: "$95", image: "/shoe.jpg" },
+  { id: 3, name: "Desert Tan Boot", price: "$150", image: "/heels.jpg" },
+  { id: 4, name: "Midnight Runner", price: "$110", image: "/baby show.jpg" },
 ];
 
 export default function Shop() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#1f1a17] to-[#3b2f2f] text-white pt-28 pb-16">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 text-gray-900 pt-28 pb-16">
       <div className="container mx-auto px-6">
+
         {/* Heading */}
         <motion.h1
-          className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#d2b48c]"
+          className="text-4xl md:text-5xl font-bold text-center mb-10 text-black"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -41,28 +29,56 @@ export default function Shop() {
           Our Collection
         </motion.h1>
 
+        {/* 🔍 Search Bar */}
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          <input
+            type="text"
+            placeholder="Search shoes..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-md px-5 py-3 rounded-full border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-black text-gray-700 placeholder-gray-500 transition-all"
+          />
+        </motion.div>
+        {/* Category Links */}
+        <div className="flex justify-center gap-4 mb-12">
+          <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Men</a>
+          <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Women</a>
+          <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Baby</a>
+        </div>
+
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              className="bg-[#2b2320] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-5">
-                <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-                <p className="text-[#d2b48c] font-medium">{product.price}</p>
-              </div>
-            </motion.div>
-          ))}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-5 text-center">
+                  <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+                  <p className="text-gray-600 font-medium">{product.price}</p>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 col-span-full">
+              No products found.
+            </p>
+          )}
         </div>
       </div>
     </div>
