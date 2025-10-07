@@ -1,11 +1,19 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import SearchBar from "../components/SearchBar";
 
 const babyShoes = [
-  { id: 1, name: "Baby Sneaker Tiny Steps", price: "$50", image: "/baby-shoe.jpg" },
-  { id: 2, name: "Soft Baby Moccasin", price: "$60", image: "/baby-shoe2.jpg" },
+  { id: 1, name: "Baby Sneaker Tiny Steps", price: "$50", image: "/baby show.jpg" },
+  { id: 2, name: "Soft Baby Moccasin", price: "$60", image: "/pink-shop.jpg" },
 ];
 
 export default function Baby() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProducts = babyShoes.filter((p) =>
+    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 text-gray-900 pt-28 pb-16">
       <div className="container mx-auto px-6">
@@ -18,27 +26,51 @@ export default function Baby() {
           Baby Collection
         </motion.h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {babyShoes.map((product, index) => (
-            <motion.div
-              key={product.id}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-5 text-center">
-                <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-                <p className="text-gray-600 font-medium">{product.price}</p>
-              </div>
-            </motion.div>
-          ))}
+        {/* Search Bar */}
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+        {/* Category Links */}
+        <div className="flex justify-center gap-4 mb-8">
+          <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            Men
+          </a>
+          <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            Women
+          </a>
+          <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            Baby
+          </a>
+        </div>
+
+
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-6">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-5 text-center">
+                  <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+                  <p className="text-gray-600 font-medium">{product.price}</p>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <p className="text-center text-gray-500 col-span-full">
+              No products found.
+            </p>
+          )}
         </div>
       </div>
     </div>

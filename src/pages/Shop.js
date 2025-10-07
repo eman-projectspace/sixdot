@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SearchBar from "../components/SearchBar";
 
 const products = [
-  { id: 1, name: "Classic Brown Leather", price: "$120", image: "/men-shoe.jpg" },
-  { id: 2, name: "Urban Street Sneaker", price: "$95", image: "/shoe.jpg" },
-  { id: 3, name: "Desert Tan Boot", price: "$150", image: "/heels.jpg" },
-  { id: 4, name: "Midnight Runner", price: "$110", image: "/baby show.jpg" },
+  { id: 1, name: "Classic Brown Leather", price: "$120", category: "Men", image: "/men-shoe.jpg" },
+  { id: 2, name: "Urban Street Sneaker", price: "$95", category: "Men", image: "/shoe.jpg" },
+  { id: 3, name: "Desert Tan Boot", price: "$150", category: "Women", image: "/heels.jpg" },
+  { id: 4, name: "Midnight Runner", price: "$110", category: "Baby", image: "/baby show.jpg" },
 ];
+
 
 export default function Shop() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredProducts = products.filter(
+    (p) =>
+      p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200 text-gray-900 pt-28 pb-16">
@@ -29,27 +34,11 @@ export default function Shop() {
           Our Collection
         </motion.h1>
 
-        {/* 🔍 Search Bar */}
-        <motion.div
-          className="flex justify-center mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          <input
-            type="text"
-            placeholder="Search shoes..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full max-w-md px-5 py-3 rounded-full border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-black text-gray-700 placeholder-gray-500 transition-all"
-          />
-        </motion.div>
-        {/* Category Links */}
-        <div className="flex justify-center gap-4 mb-12">
-          <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Men</a>
-          <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Women</a>
-          <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Baby</a>
-        </div>
+
+        {/* Search Bar */}
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+        <div className="flex justify-center gap-4 mb-12"> <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Men</a> <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Women</a> <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Baby</a> </div>
 
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
