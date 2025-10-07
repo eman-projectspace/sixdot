@@ -33,13 +33,13 @@ export default function Women() {
         {/* Category Links */}
         <div className="flex justify-center gap-4 mb-8">
           <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
-            Men
+            Men Collection
           </a>
           <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
-            Women
+            Women Collection
           </a>
           <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
-            Baby
+            Baby Collection
           </a>
         </div>
 

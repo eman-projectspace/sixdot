@@ -33,7 +33,7 @@ export default function Contact() {
         transition={{ duration: 0.8, delay: 0.4 }}
       >
         <a
-          href="https://wa.me/923001234567"
+          href="https://wa.me/923004408998"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full transition-all"

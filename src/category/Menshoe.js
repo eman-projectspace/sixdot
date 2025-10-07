@@ -30,8 +30,17 @@ export default function Men() {
         {/* Search Bar */}
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-        <div className="flex justify-center gap-4 mb-12"> <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Men</a> <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Women</a> <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">Baby</a> </div>
-
+        <div className="flex justify-center gap-4 mb-8">
+          <a href="/menshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            Men Collection
+          </a>
+          <a href="/womenshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            Women Collection
+          </a>
+          <a href="/babyshoe" className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+            Baby Collection
+          </a>
+        </div>
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {filteredProducts.length > 0 ? (
