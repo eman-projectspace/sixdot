@@ -68,7 +68,7 @@ export default function Contact() {
 
       {/* Footer Note */}
       <p className="text-gray-500 text-sm mt-10 pb-6 tracking-wide text-center">
-        © {new Date().getFullYear()} <span className="font-semibold text-black">6 Dot</span> — Crafted by <span className="text-black">Shahid Majeed</span>
+        © {new Date().getFullYear()} <span className="font-semibold text-black">6 Dot</span> — Crafted by <span className="text-black">Eman Waheed</span>
       </p>
     </div>
   );
